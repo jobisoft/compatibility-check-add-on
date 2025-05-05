@@ -1,0 +1,46 @@
+{
+    "footer_intro": {
+        "message": "To reduce load on the queried servers, the data used in this view is updated only every 24h."
+    },
+    "footer_last_download": {
+        "message": "Last download"
+    },
+    "footer_last_update": {
+        "message": "Last update"
+    },
+    "table_header": {
+        "message": "Compatibility Report"
+    },
+    "subtext_not_listed": {
+        "message": "Not listed on addons.thunderbird.net",
+        "description": "Used as sub text below the name of an add-on to indicate, that the add-on is not listed on ATN"
+    },
+    "subtext_committed_to_monthly": {
+        "message": "committed to monthly releases",
+        "description": "Used as sub text in parentheses below the name of an add-on to indicate, that the developer will provide the required monthly updates to keep the add-on compatible on the monthly release channel. Example: 'Legacy Add-on (committed to monthly releases)'"
+    },
+    "subtext_alternative": {
+        "message": "Alternative",
+        "description": "Used as sub text below the name of an out-dated add-on. Example 'Alternative: Add-on XY."
+    },
+    "suggestion_upgrade_to_release": {
+        "message": "This profile could be upgraded to Thunderbird's monthly release channel.",
+        "description": "Suggestion is shown if there are no problematic add-ons which might not get the required updates on the monthly release channel."
+    },
+    "suggestion_stay_on_esr_incompatible": {
+        "message": "This profile should stay on Thunderbird's \"Extended Support Release\" channel (ESR). Some installed Add-ons are not compatible with Thunderbird's monthly release channel.",
+        "description": "Suggestion is shown to users on ESR, if they use add-ons which are not supported on the monthly release channel, and should therefore stay to ESR."
+    },
+    "suggestion_stay_on_esr_unsupported_experiments": {
+        "message": "This profile should stay on Thunderbird's \"Extended Support Release\" channel (ESR). Even though all installed Add-ons are currently compatible with Thunderbird's monthly release channel, some installed Experiments/Legacy Add-ons may not always receive the required monthly updates and break frequently.",
+        "description": "Suggestion is shown to users on ESR, if they use problematic add-ons which may not receive the required monthly updates and break on the monthly release channel, and should therefore stay to ESR."
+    },
+    "suggestion_move_back_to_esr_incompatible": {
+        "message": "This profile should move back to Thunderbird's \"Extended Support Release\" channel (ESR). Some installed Add-ons are not compatible with Thunderbird's monthly release channel.",
+        "description": "Suggestion is shown to users on the monthly release channel, if they use incompatible add-ons, and should therefore move back to ESR."
+    },
+    "suggestion_move_back_to_esr_unsupported_experiments": {
+        "message": "This profile should move back to Thunderbird's \"Extended Support Release\" channel (ESR). Even though all installed Add-ons are currently compatible with Thunderbird's monthly release channel, some installed Experiments/Legacy Add-ons may not always receive the required monthly updates and break frequently.",
+        "description": "Suggestion is shown to users on the monthly release channel, if they use problematic add-ons which may not receive the required monthly updates and break on the monthly release channel, and should therefore move back to ESR.."
+    }
+}
