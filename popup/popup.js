@@ -3,10 +3,11 @@ import { compareVer } from "../modules/utils.mjs";
 
 const BEST_ICON_SIZE = 32;
 
-const RELEASE_COMPATIBLE_CERTAIN = 8;
-const RELEASE_COMPATIBLE_UNCERTAIN = 4;
-const NEXT_ESR_COMPATIBLE = 2;
-const ESR_COMPATIBLE = 1;
+const SORT_DISABLED = 16;
+const SORT_RELEASE_COMPATIBLE_CERTAIN = 8;
+const SORT_RELEASE_COMPATIBLE_UNCERTAIN = 4;
+const SORT_NEXT_ESR_COMPATIBLE = 2;
+const SORT_ESR_COMPATIBLE = 1;
 
 function findBestSize(icons) {
   if (!icons) {
@@ -74,27 +75,29 @@ async function onLoad() {
   for (let addon of Object.values(addonData)) {
     webextensions++;
 
-    let compatibilityRating = 0;
+    let sortOrder = 0;
     for (let type of Object.keys(TYPE_MAP)) {
       let compatEntry = addon.compat.find(e => e.type == type);
       if (compatEntry?.extVersion) {
         if (type == "current-esr") {
-          compatibilityRating += ESR_COMPATIBLE;
+          sortOrder += SORT_ESR_COMPATIBLE;
         }
         if (type == "next-esr") {
-          compatibilityRating += NEXT_ESR_COMPATIBLE;
+          sortOrder += SORT_NEXT_ESR_COMPATIBLE;
         }
         if (type == "release") {
           if (!compatEntry.isExperiment || addon.dedicatedSupportOnRelease) {
-            compatibilityRating += RELEASE_COMPATIBLE_CERTAIN;
+            sortOrder += SORT_RELEASE_COMPATIBLE_CERTAIN;
           } else {
-            compatibilityRating += RELEASE_COMPATIBLE_UNCERTAIN;
+            sortOrder += SORT_RELEASE_COMPATIBLE_UNCERTAIN;
           }
         }
       }
+      if (!addon.enabled) {
+        sortOrder += SORT_DISABLED;
+      }
     }
 
-    let displayName = addon.name;
     let release = addon.compat.find(e => e.type == "release");
     let isReleaseIncompatible = (!release || !release.extVersion);
     let isReleaseExperiment = release && release.isExperiment && addon.dedicatedSupportOnRelease;
@@ -104,10 +107,12 @@ async function onLoad() {
       releaseIncompatible++;
     }
 
+    let basicNameCell = `<span class="name-span" data-i18n-disabled="disabled">${addon.name}</span>`;
+    let nameCell = basicNameCell;
     if (isReleaseExperiment) {
       releaseExperiments++;
-      displayName = `<div style="display: flex; flex-direction: column;">
-                <span>${addon.name}</span>
+      nameCell = `<div style="display: flex; flex-direction: column;">
+                ${basicNameCell}
                 <span style="font-size: 0.85em; color: #666;">Experiment/Legacy Add-on (${browser.i18n.getMessage("subtext_committed_to_monthly")
         })</span>
               </div>`
@@ -115,8 +120,8 @@ async function onLoad() {
 
     if (isEsrOnlyExperiment) {
       esrOnlyExperiments++;
-      displayName = `<div style="display: flex; flex-direction: column;">
-                <span>${addon.name}</span>
+      nameCell = `<div style="display: flex; flex-direction: column;">
+                ${basicNameCell}
                 <span style="font-size: 0.85em; color: #666;">Experiment/Legacy Add-on</span>
               </div>`
     }
@@ -134,8 +139,8 @@ async function onLoad() {
       })
 
       if (alternative?.name) {
-        displayName = `<div style="display: flex; flex-direction: column;">
-                  <span>${addon.name}</span>
+        nameCell = `<div style="display: flex; flex-direction: column;">
+                  ${basicNameCell}
                   <span style="font-size: 0.85em; color: #666;">${browser.i18n.getMessage("subtext_alternative")}: ${alternative.id && alternative.link
             ? `<a href="${alternative.link}">${alternative.name}</a>`
             : alternative.link
@@ -148,15 +153,15 @@ async function onLoad() {
 
     if (addon.isUnknown) {
       unknown++;
-      displayName = `<div style="display: flex; flex-direction: column;">
-      <span>${addon.name}</span>
+      nameCell = `<div style="display: flex; flex-direction: column;">
+      ${basicNameCell}
       <span style="font-size: 0.85em; color: #666;">${browser.i18n.getMessage("subtext_not_listed")}</span>
     </div>`
     }
 
     let cells = new Map();
     cells.set("icon", `<td><img width="${BEST_ICON_SIZE}" src="${findBestSize(addon.icons)}"></td>`);
-    cells.set("name", `<td>${displayName}</td>`);
+    cells.set("name", `<td>${nameCell}</td>`);
 
     addon.compat.forEach(e => {
       const compatible = !!e.extVersion;
@@ -172,13 +177,13 @@ async function onLoad() {
       let value = compatible ? e.type == "release" && isEsrOnlyExperiment ? "(✔)" : "✔" : "❌"
       cells.set(
         e.type,
-        `<td title="${title}" class="${classes.join(" ")}">${value}</td>`
+        `<td title="${title}" class="${classes.join(" ")}"><span>${value}</span></td>`
       );
       // Keep track of available columns.
       columns.set(e.type, e.appVersion);
     });
 
-    rows.push({ cells, compatibilityRating });
+    rows.push({ cells, addon, compatibilityRating: sortOrder });
   }
 
   html.push("<thead>");
@@ -192,8 +197,8 @@ async function onLoad() {
   html.push("<tbody>");
 
   rows.sort((a, b) => a.compatibilityRating - b.compatibilityRating);
-  for (let { cells } of rows) {
-    html.push(`<tr>`);
+  for (let { cells, addon } of rows) {
+    html.push(`<tr data-enabled="${!!addon.enabled}">`);
     html.push(cells.get("icon"));
     html.push(cells.get("name"));
     for (let type of ["current-esr", "next-esr", "release"]) {

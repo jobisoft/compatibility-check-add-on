@@ -99,3 +99,17 @@ td:nth-child(n+3) img {
     color: white;
     display: flex;
 }
+
+tr[data-enabled="false"] span {
+    color: #666;
+}
+
+tr[data-enabled="false"] .name-span::after {
+    content: " (" attr(data-i18n-disabled) ")";
+    font-style: italic;
+}
+
+.sup {
+    vertical-align: super;
+    font-size: 0.6em;
+}

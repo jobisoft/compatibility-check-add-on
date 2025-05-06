@@ -113,6 +113,7 @@ async function processNextJob() {
                 addonData[addon.id] = data;
                 addonData[addon.id].name = addon.name;
             }
+            addonData[addon.id].enabled = addon.enabled;
         }
     }
 
@@ -139,6 +140,7 @@ async function processNextJob() {
                         addonData[info.id] = data;
                         addonData[info.id].name = info.name;
                     }
+                    addonData[info.id].enabled = info.enabled;
                 }
                 break;
             case "uninstalled":
