@@ -113,3 +113,8 @@ tr[data-enabled="false"] .name-span::after {
     vertical-align: super;
     font-size: 0.6em;
 }
+
+.annotation {
+    font-size: 0.85em;
+    color: #666;
+}

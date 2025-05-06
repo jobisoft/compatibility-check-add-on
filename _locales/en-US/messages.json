@@ -17,7 +17,11 @@
     },
     "subtext_committed_to_monthly": {
         "message": "committed to monthly releases",
-        "description": "Used as sub text in parentheses below the name of an add-on to indicate, that the developer will provide the required monthly updates to keep the add-on compatible on the monthly release channel. Example: 'Legacy Add-on (committed to monthly releases)'"
+        "description": "Used as sub text in parentheses below the name of an add-on to indicate, that the developer will provide the required updates to keep the add-on compatible on the monthly release channel. Example: 'Legacy Add-on (committed to monthly releases)'"
+    },
+    "subtext_may_break_on_release": {
+        "message": "may break with monthly releases",
+        "description": "Used as sub text in parentheses below the name of an add-on to indicate, that the developer may not be able to provide the required updates to keep the add-on compatible on the monthly release channel. Example: 'Legacy Add-on (may break with monthly releases)'"
     },
     "subtext_alternative": {
         "message": "Alternative",
@@ -42,5 +46,9 @@
     "suggestion_move_back_to_esr_unsupported_experiments": {
         "message": "This profile should move back to Thunderbird's \"Extended Support Release\" channel (ESR). Even though all installed Add-ons are currently compatible with Thunderbird's monthly release channel, some installed Experiments/Legacy Add-ons may not always receive the required monthly updates and break frequently.",
         "description": "Suggestion is shown to users on the monthly release channel, if they use problematic add-ons which may not receive the required monthly updates and break on the monthly release channel, and should therefore move back to ESR.."
+    },
+    "disabled": {
+        "message": "disabled",
+        "description": "Added behind the add-on name, to indicate that the add-on is disabled."
     }
 }

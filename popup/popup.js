@@ -107,14 +107,13 @@ async function onLoad() {
       releaseIncompatible++;
     }
 
-    let basicNameCell = `<span class="name-span" data-i18n-disabled="disabled">${addon.name}</span>`;
+    let basicNameCell = `<span class="name-span" data-i18n-disabled="${browser.i18n.getMessage("disabled")}">${addon.name}</span>`;
     let nameCell = basicNameCell;
     if (isReleaseExperiment) {
       releaseExperiments++;
       nameCell = `<div style="display: flex; flex-direction: column;">
                 ${basicNameCell}
-                <span style="font-size: 0.85em; color: #666;">Experiment/Legacy Add-on (${browser.i18n.getMessage("subtext_committed_to_monthly")
-        })</span>
+                <span class="annotation">Experiment/Legacy Add-on (${browser.i18n.getMessage("subtext_committed_to_monthly")})</span>
               </div>`
     }
 
@@ -122,7 +121,7 @@ async function onLoad() {
       esrOnlyExperiments++;
       nameCell = `<div style="display: flex; flex-direction: column;">
                 ${basicNameCell}
-                <span style="font-size: 0.85em; color: #666;">Experiment/Legacy Add-on</span>
+                <span class="annotation">Experiment/Legacy Add-on (${browser.i18n.getMessage("subtext_may_break_on_release")})</span>
               </div>`
     }
 
@@ -141,7 +140,7 @@ async function onLoad() {
       if (alternative?.name) {
         nameCell = `<div style="display: flex; flex-direction: column;">
                   ${basicNameCell}
-                  <span style="font-size: 0.85em; color: #666;">${browser.i18n.getMessage("subtext_alternative")}: ${alternative.id && alternative.link
+                  <span class="annotation">${browser.i18n.getMessage("subtext_alternative")}: ${alternative.id && alternative.link
             ? `<a href="${alternative.link}">${alternative.name}</a>`
             : alternative.link
               ? `<a href="https://extension-finder.thunderbird.net/?id=${encodeURIComponent(addon.id)}&q=${encodeURIComponent(addon.name)}">${alternative.name}</a>`
@@ -155,7 +154,7 @@ async function onLoad() {
       unknown++;
       nameCell = `<div style="display: flex; flex-direction: column;">
       ${basicNameCell}
-      <span style="font-size: 0.85em; color: #666;">${browser.i18n.getMessage("subtext_not_listed")}</span>
+      <span class="annotation">${browser.i18n.getMessage("subtext_not_listed")}</span>
     </div>`
     }
 

@@ -15,24 +15,30 @@
         "message": "Nicht auf addons.thunderbird.net gelistet"
     },
     "subtext_committed_to_monthly": {
-        "message": "zugesicherte monatliche Aktualisierungen"
+        "message": "zugesicherte Unterstützung für Thunderbird Release"
+    },
+    "subtext_may_break_on_release": {
+        "message": "keine zugesicherte Unterstützung für Thunderbird Release"
     },
     "subtext_alternative": {
         "message": "Alternative"
     },
     "suggestion_upgrade_to_release": {
-        "message": "Dieses Profil kann auf den monatlichen Veröffentlichungskanal von Thunderbird umgestellt werden."
+        "message": "Dieses Profil kann auf den monatlichen Veröffentlichungskanal (Release) von Thunderbird umgestellt werden."
     },
     "suggestion_stay_on_esr_incompatible": {
-        "message": "Dieses Profil sollte auf dem „Extended Support Release“-Kanal (ESR) von Thunderbird verbleiben. Einige installierte Add-ons sind nicht mit dem monatlichen Veröffentlichungskanal kompatibel."
+        "message": "Dieses Profil sollte auf dem „Extended Support Release“-Kanal (ESR) von Thunderbird verbleiben. Einige installierte Add-ons sind nicht mit dem monatlichen Veröffentlichungskanal (Release) kompatibel."
     },
     "suggestion_stay_on_esr_unsupported_experiments": {
-        "message": "Dieses Profil sollte auf dem „Extended Support Release“-Kanal (ESR) von Thunderbird verbleiben. Auch wenn derzeit alle installierten Add-ons mit dem monatlichen Veröffentlichungskanal kompatibel sind, erhalten einige installierte Experimente/Legacy-Add-ons möglicherweise nicht regelmäßig die erforderlichen monatlichen Updates und könnten dadurch häufig Probleme verursachen."
+        "message": "Dieses Profil sollte auf dem „Extended Support Release“-Kanal (ESR) von Thunderbird verbleiben. Auch wenn derzeit alle installierten Add-ons mit dem monatlichen Veröffentlichungskanal (Release) kompatibel sind, erhalten einige installierte Experimente/Legacy-Add-ons möglicherweise nicht regelmäßig die erforderlichen monatlichen Updates und könnten dadurch häufig Probleme verursachen."
     },
     "suggestion_move_back_to_esr_incompatible": {
-        "message": "Dieses Profil sollte zum „Extended Support Release“-Kanal (ESR) von Thunderbird zurückkehren. Einige installierte Add-ons sind nicht mit dem monatlichen Veröffentlichungskanal kompatibel."
+        "message": "Dieses Profil sollte zum „Extended Support Release“-Kanal (ESR) von Thunderbird zurückkehren. Einige installierte Add-ons sind nicht mit dem monatlichen Veröffentlichungskanal (Release) kompatibel."
     },
     "suggestion_move_back_to_esr_unsupported_experiments": {
-        "message": "Dieses Profil sollte zum „Extended Support Release“-Kanal (ESR) von Thunderbird zurückkehren. Auch wenn derzeit alle installierten Add-ons mit dem monatlichen Veröffentlichungskanal kompatibel sind, erhalten einige installierte Experimente/Legacy-Add-ons möglicherweise nicht regelmäßig die erforderlichen monatlichen Updates und könnten dadurch häufig Probleme verursachen."
+        "message": "Dieses Profil sollte zum „Extended Support Release“-Kanal (ESR) von Thunderbird zurückkehren. Auch wenn derzeit alle installierten Add-ons mit dem monatlichen Veröffentlichungskanal (Release) kompatibel sind, erhalten einige installierte Experimente/Legacy-Add-ons möglicherweise nicht regelmäßig die erforderlichen monatlichen Updates und könnten dadurch häufig Probleme verursachen."
+    },
+    "disabled": {
+        "message": "deaktiviert"
     }
 }
