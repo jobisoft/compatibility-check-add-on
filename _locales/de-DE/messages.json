@@ -15,10 +15,10 @@
         "message": "Nicht auf addons.thunderbird.net gelistet"
     },
     "subtext_committed_to_monthly": {
-        "message": "zugesicherte Unterstützung für Thunderbird Release"
+        "message": "zugesicherte dauerhafte Unterstützung für Thunderbird Release"
     },
     "subtext_may_break_on_release": {
-        "message": "keine zugesicherte Unterstützung für Thunderbird Release"
+        "message": "keine zugesicherte dauerhafte Unterstützung für Thunderbird Release"
     },
     "subtext_alternative": {
         "message": "Alternative"
