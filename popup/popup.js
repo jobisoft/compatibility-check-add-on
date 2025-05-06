@@ -3,6 +3,11 @@ import { compareVer } from "../modules/utils.mjs";
 
 const BEST_ICON_SIZE = 32;
 
+const RELEASE_COMPATIBLE_CERTAIN = 8;
+const RELEASE_COMPATIBLE_UNCERTAIN = 4;
+const NEXT_ESR_COMPATIBLE = 2;
+const ESR_COMPATIBLE = 1;
+
 function findBestSize(icons) {
   if (!icons) {
     return "https://addons.thunderbird.net/static/img/addon-icons/default-32.png";
@@ -67,10 +72,30 @@ async function onLoad() {
   }
 
   for (let addon of Object.values(addonData)) {
-    let release = addon.compat.find(e => e.type == "release");
-    let name = addon.name;
     webextensions++;
 
+    let compatibilityRating = 0;
+    for (let type of Object.keys(TYPE_MAP)) {
+      let compatEntry = addon.compat.find(e => e.type == type);
+      if (compatEntry?.extVersion) {
+        if (type == "current-esr") {
+          compatibilityRating += ESR_COMPATIBLE;
+        }
+        if (type == "next-esr") {
+          compatibilityRating += NEXT_ESR_COMPATIBLE;
+        }
+        if (type == "release") {
+          if (!compatEntry.isExperiment || addon.dedicatedSupportOnRelease) {
+            compatibilityRating += RELEASE_COMPATIBLE_CERTAIN;
+          } else {
+            compatibilityRating += RELEASE_COMPATIBLE_UNCERTAIN;
+          }
+        }
+      }
+    }
+
+    let displayName = addon.name;
+    let release = addon.compat.find(e => e.type == "release");
     let isReleaseIncompatible = (!release || !release.extVersion);
     let isReleaseExperiment = release && release.isExperiment && addon.dedicatedSupportOnRelease;
     let isEsrOnlyExperiment = release && release.isExperiment && !addon.dedicatedSupportOnRelease;
@@ -81,7 +106,7 @@ async function onLoad() {
 
     if (isReleaseExperiment) {
       releaseExperiments++;
-      name = `<div style="display: flex; flex-direction: column;">
+      displayName = `<div style="display: flex; flex-direction: column;">
                 <span>${addon.name}</span>
                 <span style="font-size: 0.85em; color: #666;">Experiment/Legacy Add-on (${browser.i18n.getMessage("subtext_committed_to_monthly")
         })</span>
@@ -90,7 +115,7 @@ async function onLoad() {
 
     if (isEsrOnlyExperiment) {
       esrOnlyExperiments++;
-      name = `<div style="display: flex; flex-direction: column;">
+      displayName = `<div style="display: flex; flex-direction: column;">
                 <span>${addon.name}</span>
                 <span style="font-size: 0.85em; color: #666;">Experiment/Legacy Add-on</span>
               </div>`
@@ -109,7 +134,7 @@ async function onLoad() {
       })
 
       if (alternative?.name) {
-        name = `<div style="display: flex; flex-direction: column;">
+        displayName = `<div style="display: flex; flex-direction: column;">
                   <span>${addon.name}</span>
                   <span style="font-size: 0.85em; color: #666;">${browser.i18n.getMessage("subtext_alternative")}: ${alternative.id && alternative.link
             ? `<a href="${alternative.link}">${alternative.name}</a>`
@@ -123,7 +148,7 @@ async function onLoad() {
 
     if (addon.isUnknown) {
       unknown++;
-      name = `<div style="display: flex; flex-direction: column;">
+      displayName = `<div style="display: flex; flex-direction: column;">
       <span>${addon.name}</span>
       <span style="font-size: 0.85em; color: #666;">${browser.i18n.getMessage("subtext_not_listed")}</span>
     </div>`
@@ -131,14 +156,17 @@ async function onLoad() {
 
     let cells = new Map();
     cells.set("icon", `<td><img width="${BEST_ICON_SIZE}" src="${findBestSize(addon.icons)}"></td>`);
-    cells.set("name", `<td>${name}</td>`);
+    cells.set("name", `<td>${displayName}</td>`);
 
     addon.compat.forEach(e => {
       const compatible = !!e.extVersion;
       const classes = [];
       if (e.experiment) classes.push("experiment");
-      if (compatible) classes.push("compatible");
-      if (!compatible) classes.push("incompatible");
+      if (compatible) {
+        classes.push("compatible");
+      } else {
+        classes.push("incompatible");
+      }
 
       let title = `compatible version: ${compatible ? `v${e.extVersion}` : "none"}`
       let value = compatible ? e.type == "release" && isEsrOnlyExperiment ? "(✔)" : "✔" : "❌"
@@ -150,7 +178,7 @@ async function onLoad() {
       columns.set(e.type, e.appVersion);
     });
 
-    rows.push(cells);
+    rows.push({ cells, compatibilityRating });
   }
 
   html.push("<thead>");
@@ -162,14 +190,16 @@ async function onLoad() {
   html.push("</tr>")
   html.push("</thead>");
   html.push("<tbody>");
-  for (let row of rows) {
+
+  rows.sort((a, b) => a.compatibilityRating - b.compatibilityRating);
+  for (let { cells } of rows) {
     html.push(`<tr>`);
-    html.push(row.get("icon"));
-    html.push(row.get("name"));
+    html.push(cells.get("icon"));
+    html.push(cells.get("name"));
     for (let type of ["current-esr", "next-esr", "release"]) {
       if (columns.has(type)) {
-        if (row.has(type)) {
-          html.push(row.get(type))
+        if (cells.has(type)) {
+          html.push(cells.get(type))
         } else {
           html.push(
             `<td title="${browser.i18n.getMessage("subtext_not_listed")}" class="unknown">❓</td>`

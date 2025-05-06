@@ -185,7 +185,6 @@ async function processNextJob() {
         await messenger.browserAction.setBadgeBackgroundColor({ color: "#c0392b" });
     } else {
         // Bad, we have incompatible add-ons.
-        console.log({releaseIncompatible, unknown})
         await messenger.browserAction.setBadgeText({ text: `-${releaseIncompatible + unknown}` });
         await messenger.browserAction.setBadgeBackgroundColor({ color: "#c0392b" });
     }
