@@ -2,6 +2,8 @@ import { log } from "./log.mjs"
 
 let jobs = [];
 
+export const REBUILD_INTERVAL_IN_MINUTES = 24 * 60;
+
 // A version compare function, taken from https://jsfiddle.net/vanowm/p7uvtbor/
 export function compareVer(a, b) {
     function prep(t) {
@@ -66,13 +68,12 @@ async function processNextJob() {
 
     let { lastCheck } = await messenger.storage.local.get({ lastCheck: 0 });
     let { reportData } = await messenger.storage.local.get({ reportData: null });
-    let page = browser.extension.getBackgroundPage();
 
     // Enforce rebuild, if no reportData or outdated database.
     if (
         !reportData ||
         !lastCheck ||
-        lastCheck < Date.now() - (page.rebuildIntervalInMinutes * 60 * 1000)
+        lastCheck < Date.now() - (REBUILD_INTERVAL_IN_MINUTES * 60 * 1000)
     ) {
         action = "rebuild";
     }
