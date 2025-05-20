@@ -1,7 +1,7 @@
 {
     "footer_intro": {
         "message": "To reduce load on the queried servers, the data used in this view is updated only every 24h.",
-        "deascription": "Information presented in small font size at the bottom of the report, to indicate that the data is only updated (roughly) every 24h."
+        "description": "Information presented in small font size at the bottom of the report, to indicate that the data is only updated (roughly) every 24h."
     },
     "footer_last_update": {
         "message": "Last update",
