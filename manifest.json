@@ -18,6 +18,7 @@
     },
     "browser_action": {
         "default_title": "Add-on compatibility check",
+        "default_label": "",
         "default_icon": "assets/puzzle-piece32.png",
         "default_popup": "popup/popup.html",
         "allowed_spaces": []

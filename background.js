@@ -8,11 +8,6 @@
 
 import * as utils from "./modules/utils.mjs"
 
-// Hide browserAction label if supported.
-if (browser.browserAction.setLabel) {
-  browser.browserAction.setLabel({ label: "" });
-}
-
 // Schedule rebuilds.
 browser.alarms.create("update", { periodInMinutes: utils.REBUILD_INTERVAL_IN_MINUTES });
 browser.alarms.onAlarm.addListener((alarm) => utils.checkAddons({ action: "rebuild" }));
