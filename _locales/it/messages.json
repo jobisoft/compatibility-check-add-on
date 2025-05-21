@@ -1,54 +1,54 @@
 {
     "footer_intro": {
-        "message": "To reduce load on the queried servers, the data used in this view is updated only every 24h.",
-        "description": "Information presented in small font size at the bottom of the report, to indicate that the data is only updated (roughly) every 24h."
+        "message": "Per ridurre il carico sui server interrogati, i dati utilizzati in questa visualizzazione verranno aggiornati solo ogni 24h.",
+        "description": "Informazione visualizzata in piccole dimensioni del carattere in fondo al rapporto per indicare l'approssimativo intervallo di aggiornamento dei dati ogni 24h."
     },
     "footer_last_update": {
-        "message": "Last update",
-        "description": "Used behind the footer_intro in the report, followed by a colon and a date. Example 'Last update: 14.03.2025'"
+        "message": "Ultimo aggiornamento",
+        "description": "Usato dietro il footer_intro nel rapporto, seguito da due punti e una data. Esempio 'Ultimo aggiornamento: 14.03.2025'"
     },
     "table_header": {
-        "message": "Compatibility Report",
-        "description": "Header in the compatibility table. Should indicate that the user is looking at a compatibility report for Add-ons."
+        "message": "Rapporto di compatibilità",
+        "description": "Testata della tabella di compatibilità. Indica che l'utente stà attualmente visualizzando il rapporto di compatibilità per gli Add-ons."
     },
     "subtext_not_listed": {
-        "message": "Not listed on addons.thunderbird.net",
-        "description": "Used as sub text below the name of an Add-on to indicate, that the Add-on is not listed on ATN"
+        "message": "Non presente su addons.thunderbird.net",
+        "description": "Usato come sottotesto del nome di un Add-on per indicare che l'Add-on non è presente su ATN"
     },
     "subtext_committed_to_monthly": {
-        "message": "committed to monthly releases",
-        "description": "Used as sub text in parentheses below the name of an Add-on to indicate, that the developer will provide the required updates to keep the Add-on compatible on Thunderbird's Release Channel. Example: 'Legacy Add-on (committed to monthly releases)'"
+        "message": "Pubblicato per rilasci mensili",
+        "description": "Usato come sottotesto fra parentesi del nome di un Add-on per indicare che il programmatore provvederà gli aggiornamenti necessari per mantenere l'Add-on compatibile con i rilasci mensili di Thunderbird. Esempio: 'Legacy Add-on (publicato per rilasci mensili)'"
     },
     "subtext_may_break_on_release": {
-        "message": "may break with monthly releases",
-        "description": "Used as sub text in parentheses below the name of an Add-on to indicate, that the developer may not be able to provide the required updates to keep the Add-on compatible on Thunderbird's Release Channel. Example: 'Legacy Add-on (may break with monthly releases)'"
+        "message": "Potrebbe non funzionare con rilasci mensili",
+        "description": "Usato come sottotesto fra parentesi del nome di un Add-on per indicare che il programmatore potrebbe non provvedere gli aggiornamenti necessari per mantenere l'Add-on compatibile con i rilasci mensili di Thunderbird. Esempio: 'Legacy Add-on (potrebbe non funzionare con rilasci mensili)'"
     },
     "subtext_alternative": {
-        "message": "Alternative",
-        "description": "Used as sub text below the name of an out-dated Add-on. Example 'Alternative: Add-on XY."
+        "message": "Alternativa",
+        "description": "Usato come sottotesto del nome di un Add-on obsoleto. Esempio: 'Alternativa: Add-on XY."
     },
     "suggestion_upgrade_to_release": {
-        "message": "You may upgrade to Thunderbird's Release Channel.",
-        "description": "Suggestion is shown if there are no problematic Add-ons which might not get the required updates on Thunderbird's Release Channel."
+        "message": "Aggiornamento potenzialmente compatibile con i rilasci mensili di Thunderbird.",
+        "description": "Suggerimento visualizzato se non vengono riscontrati problemi con gli Add-ons che potrebbero non ricevere gli aggiornamenti necessari per mantenere la compatibilità con i rilasci mensili di Thunderbird."
     },
     "suggestion_stay_on_esr_incompatible": {
-        "message": "Some installed Add-ons are not compatible with Thunderbird's Release Channel. You should stay on Thunderbird’s “Extended Support Release” channel to ensure consistent functionality for the Add-ons marked with “(✔)” or “❌”.",
-        "description": "Suggestion is shown to users on ESR, if they use Add-ons which are not supported on Thunderbird's Release Channel, and should therefore stay to ESR."
+        "message": "Alcuni Add-ons non sono compatibili con i rilasci mensili di Thunderbird. Si consiglia di rimanere sulla versione “Extended Support Release” di Thunderbird per garantire il mantenimento delle funzionalità per gli Add-ons segnati con “(✔)” o “❌”.",
+        "description": "Suggerimento visualizzato per gli utenti ESR se si è riscontrata la presenza di Add-ons che non supportano i rilasci mensili di Thunderbird, consigliando gli utenti di rimanere sulla versione ESR."
     },
     "suggestion_stay_on_esr_unsupported_experiments": {
-        "message": "All installed Add-ons are currently compatible with Thunderbird's Release Channel. However, some Add-ons are Experiments/Legacy, which in the future may not always receive timely updates and become inoperable. You should stay on Thunderbird’s “Extended Support Release” channel to ensure consistent functionality for the Add-ons marked with “(✔)”.",
-        "description": "Suggestion is shown to users on ESR, if they use problematic Add-ons which may not receive the required monthly updates and break on Thunderbird's Release Channel, and should therefore stay to ESR."
+        "message": "Tutti gli Add-ons installati sono attualmente compatibili con i rilasci mensili di Thunderbird. Tuttavia, alcuni Add-ons sono marcati come Sperimentali/Legacy ad indicare che in futuro protrebbero non sempre ricevere gli aggiornamenti necessari per mantenerne il funzionamento. Si consiglia di rimanere sulla versione “Extended Support Release” di Thunderbird per garantire il mantenimento delle funzionalità degli Add-ons segnati con “(✔)”",
+        "description": "Suggerimento visualizzato per gli utenti ESR in caso viene riscontrato l'uso di Add-ons problematici che potrebbero non ricevere gli aggiornamenti necessari per mantenere la compatibilità con i rilasci mensili di Thunderbird, consigliando gli utenti di rimanere sulla versione ESR."
     },
     "suggestion_move_back_to_esr_incompatible": {
-        "message": "Some installed Add-ons are not compatible with Thunderbird's Release Channel. This may affect the operation of Thunderbird or the Add-on, now or in the future. You may want to move back to Thunderbird’s “Extended Support Release” channel to ensure consistent functionality for the Add-ons marked with “(✔)” or “❌”.",
-        "description": "Suggestion is shown to users on Thunderbird's Release Channel, if they use incompatible Add-ons, and should therefore move back to ESR."
+        "message": "Alcuni Add-ons installati non sono compatibili con i rilasci mensili di Thunderbird. Questo potrebbe influire negativamente sulle funzionalità di Thunderbird o dell'Add-on. Si consiglia di tornare alla versione “Extended Support Release” di Thunderbird per garantire il mantenimento delle funzionalità degli Add-ons segnati con “(✔)” o “❌”.",
+        "description": "Suggerimento visualizzato per gli utenti della versione a rilasci mensili di Thunderbird in case usino Add-ons non compatibili, consigliando gli utenti di tornare sulla versione ESR."
     },
     "suggestion_move_back_to_esr_unsupported_experiments": {
-        "message": "All installed Add-ons are currently compatible with Thunderbird's Release Channel. However, some Add-ons are Experiments/Legacy, which in the future may not always receive timely updates and become inoperable. You may want to move back to Thunderbird’s “Extended Support Release” channel to ensure consistent functionality for the Add-ons marked with “(✔)”.",
-        "description": "Suggestion is shown to users on Thunderbird's Release Channel, if they use problematic Add-ons which may not receive the required monthly updates and break on Thunderbird's Release Channel, and should therefore move back to ESR."
+        "message": "Tutti gli Add-ons installati sono attualmente compatibili con i rilasci mensili di Thunderbird. Tuttavia, alcuni Add-ons sono marcati come Sperimentali/Legacy ad indicare che in futuro protrebbero non sempre ricevere gli aggiornamenti necessari per mantenerne il funzionamento. Si consiglia di tornare alla versione “Extended Support Release” di Thunderbird per garantire il mantenimento delle funzionalità degli Add-ons segnati con “(✔)",
+        "description": "Suggerimento visualizzato per gli utenti della versione a rilasci mensili di Thunderbird in caso usino Add-ons problematici che potrebbero non ricevere i necessari aggiornamenti mensili ed introdurre problemi con Thunderbird, consigliando gli utenti di tornare sulla versione ESR."
     },
     "disabled": {
-        "message": "disabled",
-        "description": "Added behind the Add-on name, to indicate that the Add-on is disabled."
+        "message": "disabilitato",
+        "description": "Inserito dietro il nome dell'Add-on per indicarne lo stato disabilitato."
     }
 }
