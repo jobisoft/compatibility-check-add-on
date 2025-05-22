@@ -16,12 +16,12 @@
         "description": "Used as sub text below the name of an Add-on to indicate, that the Add-on is not listed on ATN"
     },
     "subtext_committed_to_monthly": {
-        "message": "committed to monthly releases",
-        "description": "Used as sub text in parentheses below the name of an Add-on to indicate, that the developer will provide the required updates to keep the Add-on compatible on Thunderbird's Release Channel. Example: 'Legacy Add-on (committed to monthly releases)'"
+        "message": "committed to monthly add-on updates",
+        "description": "Used as sub text in parentheses below the name of an Add-on to indicate, that the developer will provide the required updates to keep the Add-on compatible on Thunderbird's Release Channel. Example: 'Legacy Add-on (committed to monthly add-on updates)'"
     },
     "subtext_may_break_on_release": {
-        "message": "may break with monthly releases",
-        "description": "Used as sub text in parentheses below the name of an Add-on to indicate, that the developer may not be able to provide the required updates to keep the Add-on compatible on Thunderbird's Release Channel. Example: 'Legacy Add-on (may break with monthly releases)'"
+        "message": "may become incompatible without monthly add-on updates",
+        "description": "Used as sub text in parentheses below the name of an Add-on to indicate, that the developer may not be able to provide the required updates to keep the Add-on compatible on Thunderbird's Release Channel. Example: 'Legacy Add-on (may become incompatible without monthly add-on updates)'"
     },
     "subtext_alternative": {
         "message": "Alternative",
