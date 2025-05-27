@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Add-on compatibility check",
-    "version": "2.5",
+    "version": "2.6",
     "author": "Thunderbird Team",
     "applications": {
         "gecko": {
