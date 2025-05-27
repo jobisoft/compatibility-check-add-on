@@ -1,5 +1,4 @@
 {
-    
     "footer_intro": {
         "message":  "Aby zmniejszyć obciążenie serwerów obsługujących zapytania, dane używane w tym widoku są aktualizowane tylko co 24 godziny.",
         "description": "Information presented in small font size at the bottom of the report, to indicate that the data is only updated (roughly) every 24h."
@@ -50,8 +49,6 @@
     },
     "disabled": {
         "message": "wyłączony",
-
-        
-        "description": "Dodawany za nazwą dodatku, aby wskazać, że dodatek jest wyłączony."
+        "description": "Added behind the Add-on name, to indicate that the Add-on is disabled."
     }
 }
