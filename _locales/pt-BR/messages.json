@@ -1,5 +1,4 @@
 {
-    
     "footer_intro": {
         "message":  "Para reduzir a carga sobre os servidores consultados, os dados usados nesta visualização são atualizados apenas a cada 24h.",
         "description": "Information presented in small font size at the bottom of the report, to indicate that the data is only updated (roughly) every 24h."
@@ -50,8 +49,6 @@
     },
     "disabled": {
         "message": "desativado",
-
-        
-        "descrição": "Adicionado atrás do nome do complemento, para indicar que o complemento está desativado."
+        "description": "Added behind the Add-on name, to indicate that the Add-on is disabled."
     }
 }
