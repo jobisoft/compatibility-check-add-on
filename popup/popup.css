@@ -32,7 +32,7 @@ thead th {
     padding: 10px;
     text-align: center;
     font-weight: normal;
-    border-bottom: 1px solid light-dark(#444, #aaa);
+    border-bottom: 1px solid light-dark(#aaa, #444);
 }
 
 th:first-child {
