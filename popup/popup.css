@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #f0f0f0;
+    background-color: light-dark(#f0f0f0, #111);
     font-family: sans-serif;
     padding: 0 10px;
     max-width: 600px;
@@ -20,7 +20,7 @@ table {
     border-spacing: 0;
     width: 100%;
     max-width: 100%;
-    background-color: #ddd;
+    background-color: light-dark(#ddd, #222);
     border-radius: 12px;
     overflow: hidden;
     table-layout: auto;
@@ -28,11 +28,11 @@ table {
 }
 
 thead th {
-    background-color: #ddd;
+    background-color: light-dark(#ddd, #222);
     padding: 10px;
     text-align: center;
     font-weight: normal;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid light-dark(#aaa, #444);
 }
 
 th:first-child {
@@ -42,11 +42,11 @@ th:first-child {
 tbody td {
     padding: 10px;
     vertical-align: middle;
-    background-color: #f8f8f8;
+    background-color: light-dark(#f8f8f8, #111);
 }
 
 tbody tr:not(:last-child) td {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid light-dark(#ccc, #333);
 }
 
 td:first-child {
@@ -101,7 +101,7 @@ td:nth-child(n+3) img {
 }
 
 tr[data-enabled="false"] span {
-    color: #666;
+    color: light-dark(#666, #999);
 }
 
 tr[data-enabled="false"] .name-span::after {
@@ -116,5 +116,5 @@ tr[data-enabled="false"] .name-span::after {
 
 .annotation {
     font-size: 0.85em;
-    color: #666;
+    color: light-dark(#666, #999);
 }
