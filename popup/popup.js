@@ -42,7 +42,6 @@ async function onLoad() {
   }
 
   let { reportData } = await messenger.storage.local.get({ reportData: null });
-  let { lastCheck } = await messenger.storage.local.get({ lastCheck: 0 });
 
   let lastUpdate = new Date(reportData.generated);
   document.getElementById("lastUpdate").textContent = lastUpdate.toLocaleString();
@@ -247,7 +246,7 @@ async function onLoad() {
     !releaseIncompatible &&
     esrOnlyExperiments > 0
   ) { // some ESR-only-Experiments
-    box.dataset.status = 'incompatible';
+    box.dataset.status = 'warning';
     box.textContent = localVersionIsRelease
       ? browser.i18n.getMessage("suggestion_move_back_to_esr_unsupported_experiments")
       : browser.i18n.getMessage("suggestion_stay_on_esr_unsupported_experiments")

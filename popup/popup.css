@@ -94,9 +94,16 @@ td:nth-child(n+3) img {
     display: flex;
 }
 
-#status-box[data-status="incompatible"] {
-    background-color: #c0392b;
+#status-box[data-status="warning"] {
+    background-color: #ff6f00;
     color: white;
+    font-weight: bolder;
+    display: flex;
+}
+
+#status-box[data-status="incompatible"] {   
+    background-color: #c0392b;
+    color: white;   
     display: flex;
 }
 
