@@ -185,7 +185,7 @@ async function processNextJob() {
     } else if (releaseIncompatible == 0 && esrOnlyExperiments > 0 && unknown == 0) {
         // Jolo, some Experiments without release support.
         await messenger.browserAction.setBadgeText({ text: `✓` });
-        await messenger.browserAction.setBadgeBackgroundColor({ color: "#c0392b" });
+        await messenger.browserAction.setBadgeBackgroundColor({ color: "#ff6f00" });
     } else {
         // Bad, we have incompatible add-ons.
         await messenger.browserAction.setBadgeText({ text: `-${releaseIncompatible + unknown}` });
