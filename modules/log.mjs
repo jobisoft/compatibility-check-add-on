@@ -2,8 +2,7 @@
 const self = await messenger.management.getSelf();
 
 // Enable debug mode in production (it is enabled automatically in add-on debug
-// install mode). This value is queried by the log.mjs module (one could set it
-// there directly).
+// install mode).
 const debug = false;
 
 // A simple log wrapper.
