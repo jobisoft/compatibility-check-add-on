@@ -180,7 +180,6 @@ async function onLoad() {
       // Keep track of available columns.
       columns.set(e.type, e.appVersion);
     });
-
     rows.push({ cells, addon, compatibilityRating: sortOrder });
   }
 
@@ -219,9 +218,12 @@ async function onLoad() {
 
   log("results", { webextensions, esrOnlyExperiments, releaseIncompatible, unknown });
 
-  let localVersion = await browser.runtime.getBrowserInfo().then(rv => rv.version);
-  let localVersionIsRelease = compareVer(localVersion, columns.get("release")) >= 0;
+  let { buildIsESR } = await browser.storage.session.get({ buildIsESR: false });
+  let { majorLocalVersion } = await browser.storage.session.get({ majorLocalVersion: 0 });
 
+  let majorReleaseVersion = parseInt(columns.get("release"), 10);
+  let localVersionIsRelease = !buildIsESR && (majorLocalVersion >= majorReleaseVersion);
+   
   const box = document.querySelector('#status-box');
   if (
     webextensions > 0 &&

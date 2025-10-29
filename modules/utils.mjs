@@ -80,9 +80,9 @@ async function processNextJob() {
 
     if (action == "rebuild") {
         log("Rebuilding ...");
-        messenger.browserAction.setBadgeText({ text: "…" });
-        messenger.browserAction.setBadgeBackgroundColor({ color: "blue" });
-        messenger.browserAction.disable();
+        await messenger.browserAction.setBadgeText({ text: "…" });
+        await messenger.browserAction.setBadgeBackgroundColor({ color: "blue" });
+        await messenger.browserAction.disable();
 
         reportData = await getReportData();
         await messenger.storage.local.set({
@@ -195,4 +195,42 @@ async function processNextJob() {
 
     jobs.shift();
     processNextJob();
+}
+
+export async function getBuildById(buildId) {
+    const url = "https://buildhub.moz.tools/api/search";
+    const query = {
+        query: {
+            term: {
+                "build.id": buildId
+            }
+        }
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(query)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.hits?.hits?.length > 0) {
+            const build = data.hits.hits[0]._source;
+            return {
+                product: build.source.product,
+                version: build.target.version,
+            }
+        }
+    } catch (err) {
+        console.error("Error fetching build info:", err);
+        return null;
+    }
 }

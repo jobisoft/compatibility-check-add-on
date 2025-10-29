@@ -8,6 +8,24 @@
 
 import * as utils from "./modules/utils.mjs"
 
+// Init badge with neutral state.
+await messenger.browserAction.setBadgeText({ text: "…" });
+await messenger.browserAction.setBadgeBackgroundColor({ color: "blue" });
+await messenger.browserAction.disable();
+
+// Determine if build is ESR and store this information for later use.
+const { buildID } = await browser.runtime.getBrowserInfo();
+const buildInfo = await utils.getBuildById(buildID);
+const buildIsESR = buildInfo?.version?.endsWith("esr") || false;
+await browser.storage.session.set({ buildIsESR });
+
+// Store major local version for later use.
+const majorLocalVersion = await browser.runtime.getBrowserInfo()
+    .then(rv => rv.version)
+    .then(rv => rv.split(".").at(0))
+    .then(rv => parseInt(rv, 10));
+await browser.storage.session.set({ majorLocalVersion });
+
 // Schedule rebuilds.
 browser.alarms.create("update", { periodInMinutes: utils.REBUILD_INTERVAL_IN_MINUTES });
 browser.alarms.onAlarm.addListener((alarm) => utils.checkAddons({ action: "rebuild" }));
